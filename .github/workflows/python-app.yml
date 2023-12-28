@@ -6,14 +6,15 @@ name: Python application
 on: push 
 
 jobs:
-  unit-testing:
-    runs-on: ubuntu-latest 
-     # Passed SonarCube -- continue with deploy
-    
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - name: Install pipenv, libpq, and pandoc
+       with:
+          python-version: 3.8
       # Passed SonarCube -- continue with deploy
       - name: Install pipenv, libpq, and pandoc
         run: |
