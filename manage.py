@@ -26,3 +26,4 @@ if __name__ == '__main__':
 
 
 # https://copyprogramming.com/howto/monitoring-django-application-performance-with-opentelemetry#google_vignette
+# https://docs.djangoproject.com/en/5.0/intro/tutorial01/
