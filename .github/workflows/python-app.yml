@@ -6,40 +6,42 @@ name: Python application
 on: push 
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+  unit-testing:
+    runs-on: ubuntu-latest 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - name: Install pipenv, libpq, and pandoc
-       with:
+         with:
           python-version: 3.8
-      # Passed SonarCube -- continue with deploy
-      - name: Install pipenv, libpq, and pandoc
-        run: |
-          # sudo apt-get install libpq-dev -y
-          pip install --upgrade pip
-          pip install pipenv
+      - python -m pip install --upgrade pip
+      - run: pip install flake8
+      - run: pip --python 3.8 install setuptools==56.0.0
+      - run : pip install pytest
+      - run: pip install -r requirements.txt # install all our dependencies for the project
+      - run: pytest tests.py # run pytest test
+   
+   
+#    steps:
+#       - uses: actions/checkout@v2
+#       - uses: actions/setup-python@v2
+#       - name: Install pipenv, libpq, and pandoc
+#        with:
+#           python-version: 3.8
+#       # Passed SonarCube -- continue with deploy
+#       - name: Install pipenv, libpq, and pandoc
+#         run: |
+#           # sudo apt-get install libpq-dev -y
+#           pip install --upgrade pip
+#           pip install pipenv
 
-      - name: Install dependencies
-        run: |
-          pipenv --python 3.8 install setuptools==56.0.0
-          pipenv --python 3.8 run pip install --no-deps -r requirements.txt
-      - name: Test with pytest
-      run: |
-#         pytest
-          pytest tests.py # run pytest test
-    # steps:
-    # - name : Checkout code
-    #   uses : actions/checkout@v2
-      
-    # - name : Install Packages 
-    #   run : pip install pytest
-      
-    # - name : Run tests 
-    #   run : pytest tests.py
-
+#       - name: Install dependencies
+#         run: |
+#           pipenv --python 3.8 install setuptools==56.0.0
+#           pipenv --python 3.8 run pip install --no-deps -r requirements.txt
+#       - name: Test with pytest
+#       run: |
+# #         pytest
+#           pytest tests.py # run pytest test
 # on:
 #   push:
 #     branches: [ "master" ]
