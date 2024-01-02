@@ -15,7 +15,7 @@ jobs:
       - run: pip install flake8
       - run: pip install setuptools==59.5.0
       - run : pip install pytest
-      - run: pip install -r requirements.txt # install all our dependencies for the project
+      - run: pip install --no-deps  -r requirements.txt # install all our dependencies for the project
       - run: pytest tests.py # run pytest test
    
    
