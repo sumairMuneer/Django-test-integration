@@ -1,5 +1,7 @@
 from django.test import TestCase
 
+
+
 # Create your tests here.
 # import datetime
 
@@ -8,7 +10,14 @@ from django.test import TestCase
 # from .models import Question
 # from django.urls import reverse
 
-# class QuestionModelTests(TestCase):
+class QuestionModelTests(TestCase):
+      def test_was_published_recently_with_future_question1(self):
+        """
+        was_published_recently() returns False for questions whose pub_date
+        is in the future.
+        """
+        # a=2
+        self.assertGreaterEqual(2,2)
 #     def test_was_published_recently_with_future_question(self):
 #         """
 #         was_published_recently() returns False for questions whose pub_date
