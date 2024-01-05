@@ -28,8 +28,8 @@ jobs:
       - run : pipenv --python 3.8 run pip install pytest
 
       - name: Open Web Client Directory
-         working-directory: ./mysite
-         run: |
+        working-directory: ./mysite
+        run: |
           ls -la
           pipenv --python 3.8 run pytest polls.tests.py 
       # - run: pip install --no-deps  -r requirements.txt # install all our dependencies for the project
