@@ -1,0 +1,38 @@
+{
+	"dev": {
+		"aws_region": "us-east-2",
+		"django_settings": "config.settings",
+		"profile_name": "default",
+		"project_name": "swa-backend-v1-testing",
+		"runtime": "python3.8",
+		"s3_bucket": "zappa-django-deploy-testing",
+		"memory_size": 3008,
+		"manage_roles": false,
+		"cors": true,
+		"role_name": "Zappa-Execution-Role",
+		"extra_permissions": [
+			{
+				"Effect": "Allow",
+				"Action": [
+					"logs:CreateLogGroup",
+					"logs:CreateLogStream",
+					"logs:PutLogEvents",
+					"ec2:CreateNetworkInterface",
+					"ec2:DescribeNetworkInterfaces",
+					"ec2:DeleteNetworkInterface",
+					"ec2:AssignPrivateIpAddresses",
+					"ec2:UnassignPrivateIpAddresses"
+				],
+				"Resource": "*"
+			}
+		],
+		"lambda_description": "Django-v1.8 (dev testing)",
+		"timeout_seconds": 300,
+		"keep_warm": false,
+		"base_path": "dev",
+		"tags": {
+			"Name": "django",
+			"Environment": "exp"
+		}
+	}
+}
