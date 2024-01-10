@@ -24,38 +24,18 @@ jobs:
           pipenv --python 3.8 install setuptools==56.0.0
           pipenv install flake8
           pipenv --python 3.8 run pip install --no-deps -r requirements.txt
-      # - run: pip install setuptools==59.5.0
+
       - run : pipenv --python 3.8 run pip install pytest
 
       - name: Open Web Client Directory
         # working-directory: ./mysite
         run: |
           ls -la
-          pipenv --python 3.8 run python manage.py test polls.tests
-      # - run: pip install --no-deps  -r requirements.txt # install all our dependencies for the project
-   
-   
-#    steps:
-#       - uses: actions/checkout@v2
-#       - uses: actions/setup-python@v2
-#       - name: Install pipenv, libpq, and pandoc
-#        with:
-#           python-version: 3.8
-#       # Passed SonarCube -- continue with deploy
-#       - name: Install pipenv, libpq, and pandoc
-#         run: |
-#           # sudo apt-get install libpq-dev -y
-#           pip install --upgrade pip
-#           pip install pipenv
+          pipenv --python 3.8 run python manage.py test  polls.tests 
 
-#       - name: Install dependencies
-#         run: |
-#           pipenv --python 3.8 install setuptools==56.0.0
-#           pipenv --python 3.8 run pip install --no-deps -r requirements.txt
-#       - name: Test with pytest
-#       run: |
-# #         pytest
-#           pytest tests.py # run pytest test
+      # to run test cases of multiple apps    
+          # pipenv --python 3.8 run python manage.py test app_1.tests polls.tests 
+   
 # on:
 #   push:
 #     branches: [ "master" ]
