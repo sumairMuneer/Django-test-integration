@@ -8,12 +8,13 @@ on:
     branches:
       - master
   pull_request:
-    
+    branches: 
+      - stage
 
 jobs:
   unit-testing:
     runs-on: ubuntu-latest 
-    if: github.ref != 'refs/heads/master'
+    if: github.ref == 'refs/heads/stage'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
