@@ -3,11 +3,18 @@
 
 name: Python application
 
-on: push 
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      -stage
 
 jobs:
   unit-testing:
     runs-on: ubuntu-latest 
+    if: github.ref != 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -35,7 +42,15 @@ jobs:
 
       # to run test cases of multiple apps    
           # pipenv --python 3.8 run python manage.py test app_1.tests polls.tests 
-   
+  deoloy:
+    runs-on: ubuntu-latest 
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
 # on:
 #   push:
 #     branches: [ "master" ]
