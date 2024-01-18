@@ -51,7 +51,7 @@ jobs:
   deoloy:
     runs-on: ubuntu-latest 
     # if: github.ref == 'refs/heads/master'
-    condition: ${{ if in(github.ref, 'refs/heads/master','refs/heads/stage', 'refs/heads/dev') }}
+    ${{ if in(github.ref, 'refs/heads/master','refs/heads/stage', 'refs/heads/dev') }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
