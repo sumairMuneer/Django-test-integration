@@ -20,7 +20,7 @@ jobs:
   unit-testing:
     runs-on: ubuntu-latest 
     # if: github.ref != 'refs/heads/stage'
-    if: ${{ (github.ref != 'refs/heads/master') && (github.ref != 'refs/heads/stage') }}
+    if: ${{ (github.ref != 'refs/heads/master') && (github.ref != 'refs/heads/stage')&& (github.ref != 'refs/heads/dev') }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
