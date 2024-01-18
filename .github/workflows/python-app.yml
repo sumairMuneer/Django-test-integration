@@ -7,9 +7,12 @@ on:
   push:
     branches:
       - master
+      - stage
+      - dev
   pull_request:
     branches-ignore:
       - master
+      - stage
 
 jobs:
   unit-testing:
@@ -44,7 +47,7 @@ jobs:
           # pipenv --python 3.8 run python manage.py test app_1.tests polls.tests 
   deoloy:
     runs-on: ubuntu-latest 
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
