@@ -19,8 +19,8 @@ on:
 jobs:
   unit-testing:
     runs-on: ubuntu-latest 
-    if: github.ref != 'refs/heads/stage'
-    # if: github.ref != 'refs/heads/master'
+    # if: github.ref != 'refs/heads/stage'
+    if: ${{ (github.ref != 'refs/heads/master') && (github.ref != 'refs/heads/stage') }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -51,7 +51,9 @@ jobs:
   deoloy:
     runs-on: ubuntu-latest 
     # if: github.ref == 'refs/heads/master'
-    if: in(github.ref, 'refs/heads/master','refs/heads/stage', 'refs/heads/dev') 
+     if: ${{ (github.ref == 'refs/heads/master') && (github.ref == 'refs/heads/stage') && (github.ref == 'refs/heads/dev') }}
+   
+    # if: in(github.ref, 'refs/heads/master','refs/heads/stage', 'refs/heads/dev') 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
