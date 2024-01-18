@@ -12,6 +12,7 @@ class QuestionModelTests1(TestCase):
         """
         # a=2
         self.assertGreaterEqual(2,2)
+        
 
     def test_was_published_recently_with_future_question1(self):
         """
