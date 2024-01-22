@@ -64,10 +64,11 @@ jobs:
           python-version: 3.8
       - name: Open Web Client Directory
         # working-directory: ./mysite
-        run: |
+        run: |t
           ls -la
-          echo "event name is:" ${{ github.event_name }} 
-          echo "event type is:" ${{ github.event.action }}
+          echo "event name is:" ${{ github.event.pull_request }} 
+          echo "event name is:" ${{ github.event.pull_request.merged }} 
+          echo "event type is:" ${{ github.event.pull_request.head.ref }}
 
 # on:
 #   push:
