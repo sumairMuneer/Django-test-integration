@@ -52,8 +52,8 @@ jobs:
     runs-on: ubuntu-latest 
     # if: github.ref == 'refs/heads/master'
     # if: ${{ (github.event_name != 'pull_request') && ((github.ref == 'refs/heads/master') || (github.ref == 'refs/heads/stage') || (github.ref == 'refs/heads/dev')) }}
-    if: ${{ github.event_name == 'push' }}
     # if: in(github.ref, 'refs/heads/master','refs/heads/stage', 'refs/heads/dev') 
+    if: ${{ github.event_name == 'push' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
