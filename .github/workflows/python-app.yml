@@ -68,8 +68,9 @@ jobs:
         run: |
           ls -la
           echo "event name is:" ${{ github.ref }} 
-          # echo "event name is:" ${{ github.event.pull_request.merged }} 
-          # echo "event type is:" ${{ github.event.pull_request.head.ref }}
+          echo "event name is:" ${{ github.event_name }} 
+          echo "event name is:" ${{ github.event.pull_request.merged }} 
+          echo "event type is:" ${{ github.event.pull_request.head.ref }}
 
 # on:
 #   push:
