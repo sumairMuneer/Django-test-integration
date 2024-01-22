@@ -22,4 +22,3 @@ class QuestionModelTests1(TestCase):
         self.assertGreaterEqual(2,2)
         
 
-  
