@@ -64,7 +64,7 @@ jobs:
           python-version: 3.8
       - name: Open Web Client Directory
         # working-directory: ./mysite
-        run: |t
+        run: |
           ls -la
           echo "event name is:" ${{ github.event.pull_request }} 
           echo "event name is:" ${{ github.event.pull_request.merged }} 
