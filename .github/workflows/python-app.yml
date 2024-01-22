@@ -23,7 +23,7 @@ jobs:
     # if: in(github.ref, 'refs/heads/master','refs/heads/stage', 'refs/heads/dev') 
     # if: ${{ github.event_name == 'push' }}
     # if: ${{ (github.event.pull_request.merged == true && (github.event.pull_request.head.ref == 'master' || github.event.pull_request.head.ref == 'stage' || github.event.pull_request.head.ref == 'dev')) }}
-    if: ${{ (github.event_name != pull_request) }}
+    if: ${{ (github.event_name != 'pull_request') }}
     runs-on: ubuntu-latest 
     steps:
       - uses: actions/checkout@v2
