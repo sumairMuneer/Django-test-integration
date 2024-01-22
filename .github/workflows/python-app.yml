@@ -44,6 +44,8 @@ jobs:
         # working-directory: ./mysite
         run: |
           ls -la
+          echo "event name is:" ${{ github.event_name }} 
+          echo "event type is:" ${{ github.event.action }}
           pipenv --python 3.8 run python manage.py test  polls.tests 
 
       # to run test cases of multiple apps    
