@@ -17,6 +17,28 @@ on:
     #   - stage
 
 jobs:
+  deoloy:
+    # if: github.ref == 'refs/heads/master'
+    # if: ${{ (github.event_name != 'pull_request') && ((github.ref == 'refs/heads/master') || (github.ref == 'refs/heads/stage') || (github.ref == 'refs/heads/dev')) }}
+    # if: in(github.ref, 'refs/heads/master','refs/heads/stage', 'refs/heads/dev') 
+    # if: ${{ github.event_name == 'push' }}
+    # if: ${{ (github.event.pull_request.merged == true && (github.event.pull_request.head.ref == 'master' || github.event.pull_request.head.ref == 'stage' || github.event.pull_request.head.ref == 'dev')) }}
+    # if: ${{ !(github.event.pull_request) }}
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Open Web Client Directory
+        # working-directory: ./mysite
+        run: |
+          ls -la
+          echo "event name is:" ${{ github.ref }} 
+          echo "event name is:" ${{ github.event_name }} 
+          echo "event name is:" ${{ github.event.pull_request.merged }} 
+          echo "event type is:" ${{ github.event.pull_request.head.ref }}
+          
   unit-testing:
     # if: github.ref != 'refs/heads/stage'
     if: ${{ (github.ref != 'refs/heads/master') && (github.ref != 'refs/heads/stage')&& (github.ref != 'refs/heads/dev') }}
@@ -50,27 +72,6 @@ jobs:
 
       # to run test cases of multiple apps    
           # pipenv --python 3.8 run python manage.py test app_1.tests polls.tests 
-  deoloy:
-    # if: github.ref == 'refs/heads/master'
-    # if: ${{ (github.event_name != 'pull_request') && ((github.ref == 'refs/heads/master') || (github.ref == 'refs/heads/stage') || (github.ref == 'refs/heads/dev')) }}
-    # if: in(github.ref, 'refs/heads/master','refs/heads/stage', 'refs/heads/dev') 
-    # if: ${{ github.event_name == 'push' }}
-    # if: ${{ (github.event.pull_request.merged == true && (github.event.pull_request.head.ref == 'master' || github.event.pull_request.head.ref == 'stage' || github.event.pull_request.head.ref == 'dev')) }}
-    # if: ${{ !(github.event.pull_request) }}
-    runs-on: ubuntu-latest 
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-      - name: Open Web Client Directory
-        # working-directory: ./mysite
-        run: |
-          ls -la
-          echo "event name is:" ${{ github.ref }} 
-          echo "event name is:" ${{ github.event_name }} 
-          echo "event name is:" ${{ github.event.pull_request.merged }} 
-          echo "event type is:" ${{ github.event.pull_request.head.ref }}
 
 # on:
 #   push:
