@@ -51,7 +51,7 @@ jobs:
   deoloy:
     runs-on: ubuntu-latest 
     # if: github.ref == 'refs/heads/master'
-    if: ${{ (github.event_name != 'pull_request') && ((github.ref == 'refs/heads/master') || (github.ref == 'refs/heads/stage') || (github.ref == 'refs/heads/dev')) }}
+    # if: ${{ (github.event_name != 'pull_request') && ((github.ref == 'refs/heads/master') || (github.ref == 'refs/heads/stage') || (github.ref == 'refs/heads/dev')) }}
    
     # if: in(github.ref, 'refs/heads/master','refs/heads/stage', 'refs/heads/dev') 
     steps:
@@ -63,6 +63,8 @@ jobs:
         # working-directory: ./mysite
         run: |
           ls -la
+          echo "event name is:" ${{ github.event_name }} 
+          echo "event type is:" ${{ github.event.action }}
 
 # on:
 #   push:
